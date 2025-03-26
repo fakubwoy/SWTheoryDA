@@ -464,7 +464,7 @@ const numberToName = {
     return (
       <div className="container">
         <div className="login-box">
-          <h2>WhatsApp Clone</h2>
+          <h2>Log-In to WhatsApp</h2>
           <input 
             type="tel"
             placeholder="Enter your number" 

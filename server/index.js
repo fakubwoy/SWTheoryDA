@@ -18,7 +18,7 @@ app.use(express.json());
 const users = {
   '8888888888': {
     name: 'Farhaan',
-    about: 'Hey there! I am using WhatsApp Clone',
+    about: 'Hey there! I am using WhatsApp',
     profilePic: '/pfp.webp', 
     contacts: {
       '9999999999': { name: 'Aditya' },
