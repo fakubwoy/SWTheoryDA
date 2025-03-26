@@ -1,0 +1,561 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f0f2f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #00a884;
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.login-box h2 {
+  color: #41525d;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login-box button {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.login-box button:hover {
+  background-color: #008069;
+}
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #f0f2f5;
+  padding: 10px;
+  border-bottom: 1px solid #e9edef;
+  position: relative;
+  z-index: 1;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-buttons button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #54656f;
+  transition: color 0.2s;
+  outline: none;
+}
+
+.nav-buttons button.active {
+  color: #00a884;
+  border-bottom: 2px solid #00a884;
+  font-weight: 500;
+}
+
+.chat-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.sidebar {
+  width: 30%;
+  min-width: 300px;
+  background-color: white;
+  border-right: 1px solid #e9edef;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f2f5;
+  transition: background-color 0.1s;
+  position: relative;
+  min-height: 62px;
+  box-sizing: border-box;
+}
+
+.contact-item:hover {
+  background-color: #f5f6f6;
+}
+
+.contact-avatar {
+  margin-right: 15px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-pic, .chat-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #dfe5e7;
+  display: block;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.profile-pic::before, .chat-header-avatar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  z-index: 1;
+}
+
+.profile-pic img, .chat-header-avatar img {
+  position: relative;
+  z-index: 2;
+  background-image: url('/pfp.webp');
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  min-height: 62px;
+  position: relative;
+  will-change: transform;
+  contain: content;
+}
+
+.contact-avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  margin-right: 15px;
+}
+
+img[src$="pfp.webp"] {
+  opacity: 1;
+  transition: opacity 0.1s ease;
+}
+
+.img-loading {
+  opacity: 0;
+}
+
+.img-loaded {
+  opacity: 1;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-name {
+  font-weight: 500;
+  color: #111b21;
+  font-size: 17px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.last-seen {
+  font-size: 13px;
+  color: #667781;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #e5ddd5;
+  background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png');
+  background-repeat: repeat;
+  position: relative;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e9edef;
+  height: 59px;
+  position: relative;
+  z-index: 1;
+}
+
+.chat-header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #dfe5e7;
+  border: 1px solid #e9edef;
+}
+
+.chat-header-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-title {
+  font-weight: 500;
+  color: #111b21;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-status {
+  font-size: 13px;
+  color: #667781;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.whatsapp-back-button {
+  background: none;
+  border: none;
+  padding: 8px;
+  margin-right: 16px;
+  cursor: pointer;
+  color: #54656f;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-back-button:hover {
+  background-color: #e9edef;
+}
+
+.back-arrow {
+  width: 24px;
+  height: 24px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.chat-bubble {
+  max-width: 65%;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  position: relative;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease;
+  border-radius: 7.5px;
+  font-size: 14.2px;
+  line-height: 1.4;
+}
+
+.chat-bubble.sent {
+  background-color: #d9fdd3;
+  align-self: flex-end;
+  margin-right: 16px;
+  border-top-right-radius: 0; 
+}
+
+.chat-bubble.sent::before {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-left-color: #d9fdd3;
+  border-right: 0;
+  border-top: 0;
+  margin-top: 0;
+}
+
+.chat-bubble.received {
+  background-color: white;
+  align-self: flex-start;
+  margin-left: 16px;
+  border-top-left-radius: 0; 
+}
+
+.chat-bubble.received::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: white;
+  border-left: 0;
+  border-top: 0;
+  margin-top: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-sender {
+  font-weight: bold;
+  font-size: 12.5px;
+  color: #1a73e8;
+  margin-bottom: 4px;
+}
+
+.message-content {
+  margin: 5px 0;
+  font-size: 14.2px;
+  line-height: 1.4;
+}
+
+.message-time-status {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 11px;
+  color: #667781;
+  margin-top: 3px;
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+.timestamp {
+  margin-right: 5px;
+}
+
+.status {
+  margin-left: 5px;
+  display: inline-flex;
+}
+
+.input-area {
+  display: flex;
+  padding: 10px;
+  background-color: #f0f2f5;
+  border-top: 1px solid #e9edef;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  margin-right: 10px;
+  font-size: 15px;
+  background-color: white;
+  outline: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.button {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #008069;
+}
+
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  flex: 1;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.profile-picture-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 1px solid #e9edef;
+  background-color: #f0f2f5;
+  background-image: url('/pfp.webp');
+}
+
+.profile-about {
+  color: #667781;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  max-width: 100%;
+  padding: 0 20px;
+  word-wrap: break-word;
+}
+
+.edit-profile-btn {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+}
+
+.edit-profile-btn:hover {
+  background-color: #008069;
+}
+
+.group-members {
+  font-size: 13px;
+  color: #667781;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.create-group-btn {
+  background-color: #00a884;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.create-group-btn:hover {
+  background-color: #008069;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #667781;
+  font-size: 15px;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+}
+
+.profile-pic, .chat-header-avatar, .profile-picture-large {
+  background-color: #dfe5e7;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
